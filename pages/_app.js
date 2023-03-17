@@ -41,8 +41,8 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <Header />
-        <div style={{ minHeight: "100vh", width: "90%", marginLeft: "3%" }}>
-          <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
+        <div style={{ minHeight: "100vh", width: "100%", marginLeft: "0%" }}>
+          <Box css={{ px: "$", mt: "$", "@xsMax": { px: "$10" } }}>
             <Component {...pageProps} />
           </Box>
         </div>

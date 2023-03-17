@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import louieImage from '../../public/Louie.png';
+import parkerImage from '../../public/parker.png';
+import maximImage from '../../public/maxim.png';
 
 const TestimonialsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px 0;
+  background-color: #222222;
+  padding: 50px 0;
 `;
 
 const Testimonial = styled.div`
@@ -14,10 +19,11 @@ const Testimonial = styled.div`
   align-items: center;
   text-align: center;
   max-width: 500px;
+  margin: 30px 0;
 `;
 
 const TestimonialText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #ffffff;
   margin: 20px 0;
 `;
@@ -30,8 +36,8 @@ const TestimonialAuthor = styled.p`
 
 const TestimonialImageContainer = styled.div`
   position: relative;
-  height: 50px;
-  width: 50px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 10px;
@@ -50,25 +56,25 @@ const TestimonialsSection = () => {
     <TestimonialsContainer>
       <h2>What Our Users Say</h2>
       <Testimonial>
-        <TestimonialText>"I love this app! It's such an easy way to save money without even thinking about it. Highly recommend!"</TestimonialText>
+        <TestimonialText>"This app has been a lifesaver! I never realized how much money I was losing due to interest payments on my loans, but now I'm saving thousands of dollars and paying of my debt early."</TestimonialText>
         <TestimonialImageContainer>
-          <TestimonialImage src="/testimonial-1.png" alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
+          <TestimonialImage src={louieImage} alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
         </TestimonialImageContainer>
-        <TestimonialAuthor>John Doe</TestimonialAuthor>
+        <TestimonialAuthor>Louie Reichenbach</TestimonialAuthor>
       </Testimonial>
       <Testimonial>
-        <TestimonialText>"I never knew how much money I was wasting until I started using this app. It's amazing how much I've saved in just a few months!"</TestimonialText>
+        <TestimonialText>"I've been using this app for a few months now, and it's already helped me pay off some of my debts. It's amazing how much of a difference it can make!"</TestimonialText>
         <TestimonialImageContainer>
-          <TestimonialImage src="/testimonial-2.png" alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
+          <TestimonialImage src={parkerImage} alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
         </TestimonialImageContainer>
-        <TestimonialAuthor>Jane Smith</TestimonialAuthor>
+        <TestimonialAuthor>Parker Swanson</TestimonialAuthor>
       </Testimonial>
       <Testimonial>
-        <TestimonialText>"This app has helped me pay off my loans faster and save money on interest. It's a game changer!"</TestimonialText>
+        <TestimonialText>"I used to hate budgeting for loan payments, but this app has made it so easy. I love how it rounds up my purchases and saves the spare change for me. I don't even have to think about paying my loans anymore!"</TestimonialText>
         <TestimonialImageContainer>
-          <TestimonialImage src="/testimonial-3.png" alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
+          <TestimonialImage src={maximImage} alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
         </TestimonialImageContainer>
-        <TestimonialAuthor>Bob Johnson</TestimonialAuthor>
+        <TestimonialAuthor>Maxim Zagrebelney</TestimonialAuthor>
       </Testimonial>
     </TestimonialsContainer>
   );

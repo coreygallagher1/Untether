@@ -5,12 +5,12 @@ const CTAContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px 0;
-  background-color: #1a1a1a;
+  background-color: #222222;
   padding: 60px;
 `;
 
 const CTAHeading = styled.h2`
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 40px;
   color: #ffffff;
 `;
@@ -43,10 +43,10 @@ const CTASubheading = styled.p`
 const CTASection = () => {
   return (
     <CTAContainer>
-      <CTAHeading>Get started with our service today!</CTAHeading>
-      <CTAButton>Sign Up Now</CTAButton>
+      <CTAHeading>Start building your wealth today!</CTAHeading>
+      <CTAButton>Get Started Now</CTAButton>
       <CTASubheading>
-        Sign up now to start rounding up your purchases and making micropayments on your loans.
+        Join now to round up your purchases and make micropayments on your loans with ease. Let's start building your wealth together.
       </CTASubheading>
     </CTAContainer>
   );

@@ -31,7 +31,7 @@ const HowItWorksStepNumber = styled.div`
 `;
 
 const HowItWorksStepTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ffffff;
   margin-bottom: 10px;
 `;

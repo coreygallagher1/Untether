@@ -1,46 +1,41 @@
-import { Grid, Link, Text, useTheme } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import styled from 'styled-components';
+import Link from 'next/link';
 
-export default function Footer() {
-  const router = useRouter();
-  const { isDark } = useTheme();
+const FooterContainer = styled.footer`
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+`;
 
+const FooterLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  color: #80a9ff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const Footer = () => {
   return (
-    <>
-      <div
-        style={{
-          width: "90%",
-          marginLeft: "5%",
-          height: "1px",
-          backgroundColor: "grey",
-        }}
-      />
-      <div
-        style={{
-          width: "100%",
-          height: "150px",
-          display: "flex",
-          alignItems: "center",
-          paddingLeft: "12%",
-        }}
-      >
-        <Grid.Container>
-          <Grid xs={4}>
-            <Text b>
-              &#169;{" "}
-              <Link href={"https://bitbybite.xyz/"}>Milkyway TechHub</Link> 2023
-            </Text>
-          </Grid>
-          <Grid xs={4}>
-            <Link onClick={() => router.push("/tos")}>
-              <Text b>Terms of Service</Text>
-            </Link>
-          </Grid>
-          <Grid xs={4}>
-            <Text b>Contact us</Text>
-          </Grid>
-        </Grid.Container>
-      </div>
-    </>
+    <FooterContainer>
+      <Link href="/">
+        <FooterLink>@ Untether 2023</FooterLink>
+      </Link>
+      <Link href="/terms">
+        <FooterLink>Terms of Service</FooterLink>
+      </Link>
+      <Link href="/contact">
+        <FooterLink>Contact Us</FooterLink>
+      </Link>
+    </FooterContainer>
   );
-}
+};
+
+export default Footer;

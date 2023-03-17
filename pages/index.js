@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import FeaturesSection from '../components/FeaturesSection';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -14,7 +13,6 @@ const HomePageContainer = styled.div`
 const HomePage = () => {
   return (
     <HomePageContainer>
-      <Header />
       <HeroSection />
       <FeaturesSection />
       <TestimonialsSection />
