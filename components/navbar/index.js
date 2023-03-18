@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 import untetherLogo from '../../public/logo.png';
+import { initFirebase } from '../../firebase/firebaseApp.js';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useRouter } from 'next/router';
 
 const NavContainer = styled.nav`
 position: fixed;
@@ -59,6 +63,25 @@ const NavButton = styled.button`
 `;
 
 const Navbar = () => {
+  const app = initFirebase();
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (user) {
+    router.push('/');
+  }
+
+  const signIn = async () => {
+    const result = await signInWithPopup(auth, provider);
+    console.log(result.user);
+  };
+
+
   return (
     <NavContainer>
       <LogoContainer>
@@ -94,14 +117,26 @@ const Navbar = () => {
       <div>
         <NavButton>Sign up</NavButton>
         <NavButton
+          onClick={signIn}
           style={{
             marginLeft: '20px',
             backgroundColor: 'transparent',
-            color: '#fff',
-            border: '1px solid #fff',
+            color: '#80a9ff',
+            border: '1px solid #80a9ff',
           }}
         >
           Log in
+        </NavButton>
+        <NavButton
+          onClick={() => auth.signOut()}
+          style={{
+            marginLeft: '20px',
+            backgroundColor: 'transparent',
+            color: '#80a9ff',
+            border: '1px solid #80a9ff',
+          }}
+        >
+          Sign Out
         </NavButton>
       </div>
     </NavContainer>

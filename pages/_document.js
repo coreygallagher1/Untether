@@ -17,14 +17,14 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {CssBaseline.flush()}
-          <meta name="application-name" content="ResumeRocket" />
+          <meta name="application-name" content="untether" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <meta name="apple-mobile-web-app-title" content="ResumeRocket" />
-          <meta name="description" content="ResumeRocket beta" />
+          <meta name="apple-mobile-web-app-title" content="untether" />
+          <meta name="description" content="untether beta" />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta
@@ -76,10 +76,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="ResumeRocket" />
-          <meta property="og:description" content="ResumeRocket beta" />
-          <meta property="og:site_name" content="ResumeRocket" />
-          <meta property="og:url" content="https://resumerocket.xyz" />
+          <meta property="og:title" content="untether" />
+          <meta property="og:description" content="untether beta" />
+          <meta property="og:site_name" content="untether" />
+          <meta property="og:url" content="https://untether.xyz" />
           <meta
             property="og:image"
             content="https://upload.wikimedia.org/wikipedia/commons/0/08/Circle-icons-rocket.svg"

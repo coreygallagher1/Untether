@@ -40,7 +40,7 @@
                 <path d="M64.953,7 C64.953,11 63.953,12 59.953,12 C63.953,12 64.953,13 64.953,17 C64.953,13 65.953,12 69.953,12 C65.953,12 64.953,11 64.953,7 Z" id="Path" fill="#FFD464"></path>
                 <path d="M47.953,28 C47.953,32 46.953,33 42.953,33 C46.953,33 47.953,34 47.953,38 C47.953,34 48.953,33 52.953,33 C48.953,33 47.953,32 47.953,28 Z" id="Path" fill="#FFD464"></path>
             </g>
-            <text id="ResumeRocket" font-family="Krungthep" font-size="48" font-weight="bold" fill="#17141F">
+            <text id="untether" font-family="Krungthep" font-size="48" font-weight="bold" fill="#17141F">
                 <tspan x="154" y="86">Milkyway Tech Hub</tspan>
             </text>
         </g>

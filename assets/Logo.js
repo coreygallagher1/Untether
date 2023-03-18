@@ -176,14 +176,14 @@ export const Logo = () => (
           ></path>
         </g>
         <text
-          id="ResumeRocket"
+          id="untether"
           font-family="Krungthep"
           font-size="48"
           font-weight="bold"
           fill="#17141F"
         >
           <tspan x="154" y="86">
-            ResumeRocket
+            untether
           </tspan>
         </text>
       </g>

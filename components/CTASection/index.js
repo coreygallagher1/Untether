@@ -43,7 +43,7 @@ const CTASubheading = styled.p`
 const CTASection = () => {
   return (
     <CTAContainer>
-      <CTAHeading>Start building your wealth today!</CTAHeading>
+      <CTAHeading>Become debt free and start building wealth today!</CTAHeading>
       <CTAButton>Get Started Now</CTAButton>
       <CTASubheading>
         Join now to round up your purchases and make micropayments on your loans with ease. Let's start building your wealth together.
