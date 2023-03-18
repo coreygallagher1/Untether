@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { Box } from "../components/layout/Box.js";
-<<<<<<< HEAD
-import fbb from "../config/firebaseConfig.js";
-=======
 import fbb from "../firebase/firebaseApp.js";
->>>>>>> 34a6990 (create firebase login and update cta)
 import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
