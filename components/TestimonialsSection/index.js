@@ -3,6 +3,7 @@ import Image from 'next/image';
 import louieImage from '../../public/Louie.png';
 import parkerImage from '../../public/parker.png';
 import maximImage from '../../public/maxim.png';
+import dynamic from "next/dynamic";
 
 const TestimonialsContainer = styled.div`
   display: flex;
@@ -80,4 +81,5 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection;
+
+export default dynamic (() => Promise.resolve(TestimonialsSection), {ssr: false});

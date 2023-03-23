@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import dynamic from "next/dynamic";
 
 const HowItWorksContainer = styled.div`
   display: flex;
@@ -66,4 +67,4 @@ const HowItWorksSection = () => {
   );
 };
 
-export default HowItWorksSection;
+export default dynamic (() => Promise.resolve(HowItWorksSection), {ssr: false});

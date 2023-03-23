@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import dynamic from "next/dynamic";
 
 const CTAContainer = styled.div`
   display: flex;
@@ -52,4 +53,5 @@ const CTASection = () => {
   );
 };
 
-export default CTASection;
+
+export default dynamic (() => Promise.resolve(CTASection), {ssr: false});

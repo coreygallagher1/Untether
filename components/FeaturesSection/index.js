@@ -3,6 +3,7 @@ import Image from 'next/image';
 import creditCardImage from '../../public/credit-cards.png';
 import paymentImage from '../../public/payment.png';
 import piggyBankImage from '../../public/piggy-bank.png';
+import dynamic from "next/dynamic";
 
 const FeaturesContainer = styled.div`
   display: flex;
@@ -68,4 +69,4 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection;
+export default dynamic (() => Promise.resolve(FeaturesSection), {ssr: false});

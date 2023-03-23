@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import finFreeImage from '../../public/financialFreedom.webp';
+import dynamic from "next/dynamic";
 
 const HeroContainer = styled.div`
   display: flex;
@@ -70,4 +71,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default dynamic (() => Promise.resolve(HeroSection), {ssr: false});

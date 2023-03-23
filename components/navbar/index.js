@@ -4,6 +4,8 @@ import Image from 'next/image';
 import untetherLogo from '../../public/logo.png';
 import { initFirebase } from '../../firebase/firebaseApp';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import dynamic from "next/dynamic";
+
 
 
 const NavContainer = styled.nav`
@@ -122,4 +124,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default dynamic (() => Promise.resolve(Navbar), {ssr: false});

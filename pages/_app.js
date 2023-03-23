@@ -8,6 +8,7 @@ import Header from "../components/navbar";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
 
+
 import "../styles/Global.css";
 
 // 2. Call `createTheme` and pass your custom values

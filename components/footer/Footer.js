@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import dynamic from "next/dynamic";
 
 const FooterContainer = styled.footer`
   background-color: #1a1a1a;
@@ -38,4 +39,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default dynamic (() => Promise.resolve(Footer), {ssr: false});
