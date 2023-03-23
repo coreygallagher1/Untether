@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
         <TestimonialImageContainer>
           <TestimonialImage src={maximImage} alt="Headshot of user" layout="fill" objectFit="cover" objectPosition="center" />
         </TestimonialImageContainer>
-        <TestimonialAuthor>Maxim Zagrebelney</TestimonialAuthor>
+        <TestimonialAuthor>Maxim Zagrebelny</TestimonialAuthor>
       </Testimonial>
     </TestimonialsContainer>
   );
