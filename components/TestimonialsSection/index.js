@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import louieImage from '../../public/Louie.png';
-import parkerImage from '../../public/parker.png';
-import maximImage from '../../public/maxim.png';
+import parkerImage from '../../public/Parker.png';
+import maximImage from '../../public/Maxim.png';
 import dynamic from "next/dynamic";
 
 const TestimonialsContainer = styled.div`
