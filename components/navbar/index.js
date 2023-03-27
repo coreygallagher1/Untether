@@ -69,11 +69,21 @@ const NavbarComp = () => {
   const theme = useTheme();
 
   return (
-    <Navbar isBordered={true} variant="sticky" style={{ width: "100%" }}>
+    <Navbar isBordered={true} variant="sticky" maxWidth={"fluid"}
+    css={{
+      // adjust the padding
+      px: "30px",
+
+      // adjust the font size of the Navbar.Brand and Navbar.Link components
+      fontSize: "22px",
+      "@sm": {
+        fontSize: "22px",
+      },
+    }}>
   <Navbar.Brand onClick={() => router.push("/")}>
     <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
     <Image src={untetherLogo} alt="Untether Logo" width={50} height={50} />
-    <Text b color="inherit" hideIn="xs">
+    <Text b color="inherit" hideIn="xs" css={{ fontSize: "24px", px:10 }}>
       Untether
     </Text>
   </Navbar.Brand>
