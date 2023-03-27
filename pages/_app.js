@@ -19,6 +19,29 @@ const lightTheme = createTheme({
 
 const darkTheme = createTheme({
   type: "dark",
+  colors: {
+    
+     // brand colors
+     primaryLight: '$green200',
+     primaryLightHover: '$green300',
+     primaryLightActive: '$green400',
+     primaryLightContrast: '$green600',
+     primary: '#4ADE7B',
+     primaryBorder: '$green500',
+     primaryBorderHover: '$green600',
+     primarySolidHover: '$green700',
+     primarySolidContrast: '$white',
+     primaryShadow: '$green500',
+
+     gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
+     link: '#5E1DAD',
+
+     // you can also create your own color
+     myColor: '#80b6ff'
+    
+  },
+  space: {},
+  fonts: {}
 });
 
 function MyApp({ Component, pageProps }) {
@@ -35,15 +58,8 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <NextThemesProvider
-        defaultTheme="system"
-        attribute="class"
-        value={{
-          light: lightTheme.className,
-          dark: darkTheme.className
-        }}
-      >
-        <NextUIProvider>
+      <NextThemesProvider theme={darkTheme}>
+        <NextUIProvider theme={darkTheme}>
           <Header />
           <div style={{ minHeight: "100vh", width: "100%", marginLeft: "0%" }}>
             <Box css={{ px: "$12", mt: "$", "@xsMax": { px: "$10" } }}>

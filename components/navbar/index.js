@@ -11,6 +11,8 @@ import { fbapp } from '../../firebase/firebaseApp';
 
 const NavbarComp = () => {
 
+
+
   const router = useRouter();
 
   const { pathname } = router;
@@ -66,14 +68,13 @@ const NavbarComp = () => {
     }
   };
 
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
     <Navbar isBordered={true} variant="sticky" maxWidth={"fluid"}
     css={{
       // adjust the padding
       px: "30px",
-
       // adjust the font size of the Navbar.Brand and Navbar.Link components
       fontSize: "22px",
       "@sm": {
@@ -88,15 +89,17 @@ const NavbarComp = () => {
     </Text>
   </Navbar.Brand>
   <Navbar.Content enableCursorHighlight
-          activeColor="primary"
+          activeColor= 'primary'
           hideIn="xs"
           variant="highlight-rounded">
+          
           
     <Navbar.Link
       onPress={() =>
         user.uid !== "" ? router.push("/home") : router.push("/login")
       }
       isActive={pathname == "/home"}
+      
     >
       Services
     </Navbar.Link>
@@ -135,7 +138,7 @@ const NavbarComp = () => {
         Login
       </Navbar.Link>
       <Navbar.Item>
-        <Button auto flat as={Link} onPress={() => router.push("/signup")}>
+        <Button auto flat as={Link} css={{color: '#80b6ff',}} bordered color="#80b6ff" onPress={() => router.push("/signup")}>
           Sign Up
         </Button>
       </Navbar.Item>
