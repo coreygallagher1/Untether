@@ -7,7 +7,7 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 100px 0;
+  margin: 00px 0;
   padding: 50px;
   background-color: #222222;
   border-radius: 10px;

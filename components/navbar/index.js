@@ -1,127 +1,243 @@
-import styled from 'styled-components';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import untetherLogo from '../../public/logo.png';
-import { initFirebase } from '../../firebase/firebaseApp';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import dynamic from "next/dynamic";
+import React from "react";
+import { Navbar, Button, Link, Text, useTheme, Dropdown, Avatar } from "@nextui-org/react";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { fbapp } from '../../firebase/firebaseApp';
 
+const NavbarComp = () => {
 
+  const router = useRouter();
 
-const NavContainer = styled.nav`
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background-color: #1a1a1a;
-padding: 20px 60px;
-z-index: 999;
-`;
+  const { pathname } = router;
 
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
+  const [user, setUser] = useState({
+    email: "",
+    uid: "",
+  });
 
-const LogoText = styled.a`
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-`;
-
-const LogoImg = styled(Image)`
-  margin-right: 10px;
-`;
-
-const NavLinks = styled.ul`
-  display: flex;
-  list-style: none;
-`;
-
-const NavLink = styled.li`
-  margin-left: 30px;
-  font-size: 1.2rem;
-`;
-
-const NavButton = styled.button`
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #80a9ff;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #4d7fff;
-  }
-`;
-
-const Navbar = () => {
-  const app = initFirebase();
-  const provider = new GoogleAuthProvider();
+  const authh = getAuth(fbapp);
   const auth = getAuth();
 
-  const signIn = async () => {
-    const result = await signInWithPopup(auth, provider);
-    console.log(result.user);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in
+      if (user.email !== "") {
+        setUser({
+          email: user.email,
+          uid: user.uid,
+        });
+      }
+    } else {
+      console.log("uid is none");
+      // User is signed out
+    }
+  });
+
+  const handleAction = (actionKey) => {
+    switch (actionKey) {
+      case "logout":
+        signOut(auth)
+          .then(() => {
+            // Sign-out successful.
+            setUser({
+              email: "",
+              uid: "",
+            });
+          })
+          .catch((error) => {
+            // An error happened.
+            console.log(error);
+          });
+        break;
+      case "account":
+        router.push("/account");
+        break;
+      case "settings":
+        router.push("/settings");
+        break;
+      case "cover_letters":
+        router.push("/coverletters");
+        break;
+    }
   };
 
+  const theme = useTheme();
 
   return (
-    <NavContainer>
-      <LogoContainer>
-        <LogoImg src={untetherLogo} alt="Untether Logo" width={50} height={50} />
-        <LogoText>
-          <Link style={{ color: '#80a9ff' }} href="/">
-            Untether
-          </Link>
-        </LogoText>
-      </LogoContainer>
-      <NavLinks>
-        <NavLink>
-          <Link style={{ color: '#80a9ff' }} href="/">
-            Services
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link style={{ color: '#80a9ff' }} href="/about">
-            Learn
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link style={{ color: '#80a9ff' }} href="/services">
-            Connect
-          </Link>
-        </NavLink>
-        <NavLink>
-          <Link style={{ color: '#80a9ff' }} href="/contact">
-            Pricing
-          </Link>
-        </NavLink>
-      </NavLinks>
-      <div>
-        <NavButton>Sign up</NavButton>
-        <NavButton
-          onClick={signIn}
-          style={{
-            marginLeft: '20px',
-            backgroundColor: 'transparent',
-            color: '#80a9ff',
-            border: '1px solid #80a9ff',
-          }}
+    <Navbar isBordered={true} variant="sticky" style={{ width: "100%" }}>
+  <Navbar.Brand onClick={() => router.push("/")}>
+    <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
+    <Image src={untetherLogo} alt="Untether Logo" width={50} height={50} />
+    <Text b color="inherit" hideIn="xs">
+      Untether
+    </Text>
+  </Navbar.Brand>
+  <Navbar.Content enableCursorHighlight
+          activeColor="primary"
+          hideIn="xs"
+          variant="highlight-rounded">
+          
+    <Navbar.Link
+      onPress={() =>
+        user.uid !== "" ? router.push("/home") : router.push("/login")
+      }
+      isActive={pathname == "/home"}
+    >
+      Services
+    </Navbar.Link>
+    <Navbar.Link
+      onPress={() => {
+        router.push("/pricing");
+      }}
+      isActive={pathname === "/pricing"}
+      key="pricing"
+    >
+      Learn
+    </Navbar.Link>
+    <Navbar.Link
+      key="examples"
+      isActive={pathname === "/examples"}
+      onPress={() => {
+        router.push("/examples");
+      }}
+    >
+      Connect
+    </Navbar.Link>
+    <Navbar.Link
+      key="blog"
+      isActive={pathname === "/blog"}
+      onPress={() => {
+        router.push("/blog");
+      }}
+    >
+      Pricing
+    </Navbar.Link>
+  </Navbar.Content>
+
+  {user.email === "" ? (
+    <Navbar.Content>
+      <Navbar.Link color="inherit" onPress={() => router.push("/login")}>
+        Login
+      </Navbar.Link>
+      <Navbar.Item>
+        <Button auto flat as={Link} onPress={() => router.push("/signup")}>
+          Sign Up
+        </Button>
+      </Navbar.Item>
+    </Navbar.Content>
+  ) : (
+    <Navbar.Content
+      css={{
+        "@xs": {
+          w: "12%",
+          jc: "flex-end",
+        },
+      }}
+    >
+      <Dropdown placement="bottom-right">
+        <Navbar.Item>
+          <Dropdown.Trigger>
+            <Avatar
+              color="primary"
+              text={user.email.charAt(0).toUpperCase()}
+              textColor="white"
+            />
+          </Dropdown.Trigger>
+        </Navbar.Item>
+        <Dropdown.Menu
+          aria-label="User menu actions"
+          color="primary"
+          onAction={handleAction}
         >
-          Log in
-        </NavButton>
-      </div>
-    </NavContainer>
+          <Dropdown.Item
+            textValue="Signed in as"
+            key="profile"
+            css={{ height: "$18" }}
+          >
+            <Text b color="inherit" css={{ d: "flex" }}>
+              Signed in as
+            </Text>
+            <Text b color="inherit" css={{ d: "flex" }}>
+              {user.email}
+            </Text>
+          </Dropdown.Item>
+          <Dropdown.Item textValue="Account" key="account" withDivider>
+            Account
+          </Dropdown.Item>
+          <Dropdown.Item textValue="Cover Letters" key="cover_letters">
+            Cover Letters
+          </Dropdown.Item>
+          <Dropdown.Item textValue="Settings" key="settings">
+            Settings
+          </Dropdown.Item>
+          <Dropdown.Item
+            textValue="Help & Feedback"
+            key="help_and_feedback"
+            withDivider
+          >
+            Help & Feedback
+          </Dropdown.Item>
+          <Dropdown.Item
+            textValue="Log Out"
+            onClick={signOut}
+            key="logout"
+            withDivider
+            color="error"
+          >
+            Log Out
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </Navbar.Content>
+  )}
+
+  <Navbar.Collapse>
+    <Navbar.CollapseItem isActive={pathname === "/home"}>
+      <Link
+        color="inherit"
+        css={{ minWidth: "100%" }}
+        onPress={() =>
+          user.uid !== "" ? router.push("/home") : router.push("/login")
+        }
+      >
+        Services
+      </Link>
+    </Navbar.CollapseItem>
+    <Navbar.CollapseItem isActive={pathname === "/pricing"}>
+      <Link
+        color="inherit"
+        css={{ minWidth: "100%" }}
+        onPress={() => router.push("/pricing")}
+      >
+        Pricing
+      </Link>
+    </Navbar.CollapseItem>
+    <Navbar.CollapseItem>
+      <Link
+        color="inherit"
+        css={{ minWidth: "100%" }}
+        onPress={() => router.push("/login")}
+      >
+        Learn
+      </Link>
+    </Navbar.CollapseItem>
+    <Navbar.CollapseItem>
+      <Link
+        color="inherit"
+        css={{ minWidth: "100%" }}
+        onPress={() => router.push("/blog")}
+      >
+        Blog
+      </Link>
+    </Navbar.CollapseItem>
+  </Navbar.Collapse>
+</Navbar>
   );
 };
 
-export default dynamic (() => Promise.resolve(Navbar), {ssr: false});
+export default dynamic (() => Promise.resolve(NavbarComp), {ssr: false});

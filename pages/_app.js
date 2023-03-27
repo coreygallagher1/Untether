@@ -8,6 +8,7 @@ import Header from "../components/navbar";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
 
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 import "../styles/Global.css";
 
@@ -34,21 +35,25 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <NextUIProvider
+      <NextThemesProvider
+        defaultTheme="system"
+        attribute="class"
         value={{
           light: lightTheme.className,
-          dark: darkTheme.className,
+          dark: darkTheme.className
         }}
       >
-        <Header />
-        <div style={{ minHeight: "100vh", width: "100%", marginLeft: "0%" }}>
-          <Box css={{ px: "$", mt: "$", "@xsMax": { px: "$10" } }}>
-            <Component {...pageProps} />
-          </Box>
-        </div>
-        <Spacer y={2} />
-        <Footer />
-      </NextUIProvider>
+        <NextUIProvider>
+          <Header />
+          <div style={{ minHeight: "100vh", width: "100%", marginLeft: "0%" }}>
+            <Box css={{ px: "$12", mt: "$", "@xsMax": { px: "$10" } }}>
+              <Component {...pageProps} />
+            </Box>
+          </div>
+          <Spacer y={2} />
+          <Footer />
+        </NextUIProvider>
+      </NextThemesProvider>
     </>
   );
 }
