@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import finFreeImage from '../../public/financialFreedom.webp';
+import finFreeImage from '../../../public/financialFreedom.webp';
 import dynamic from "next/dynamic";
 
 const HeroContainer = styled.div`

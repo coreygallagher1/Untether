@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import creditCardImage from '../../public/credit-cards.png';
-import paymentImage from '../../public/payment.png';
-import piggyBankImage from '../../public/piggy-bank.png';
+import creditCardImage from '../../../public/credit-cards.png';
+import paymentImage from '../../../public/payment.png';
+import piggyBankImage from '../../../public/piggy-bank.png';
 import dynamic from "next/dynamic";
 
 const FeaturesContainer = styled.div`
