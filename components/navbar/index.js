@@ -81,7 +81,7 @@ const NavbarComp = () => {
         fontSize: "22px",
       },
     }}>
-  <Navbar.Brand onClick={() => router.push("/")}>
+  <Navbar.Brand onClick={() => router.push("/")} >
     <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
     <Image src={untetherLogo} alt="Untether Logo" width={50} height={50} />
     <Text b color="inherit" hideIn="xs" css={{ fontSize: "24px", px:10 }}>
@@ -91,42 +91,32 @@ const NavbarComp = () => {
   <Navbar.Content enableCursorHighlight
           activeColor= 'primary'
           hideIn="xs"
-          variant="highlight-rounded">
+          variant="underline">
           
           
     <Navbar.Link
       onPress={() =>
-        user.uid !== "" ? router.push("/home") : router.push("/login")
+        user.uid !== "" ? router.push("/connectBank") : router.push("/login")
       }
-      isActive={pathname == "/home"}
+      isActive={pathname == "/connectBank"}
       
     >
-      Services
+      Connect My Bank
     </Navbar.Link>
     <Navbar.Link
-      onPress={() => {
-        router.push("/pricing");
-      }}
-      isActive={pathname === "/pricing"}
-      key="pricing"
+      onPress={() =>
+       router.push("/learn")
+      }
+      isActive={pathname == "/learn"}
     >
       Learn
     </Navbar.Link>
+
     <Navbar.Link
-      key="examples"
-      isActive={pathname === "/examples"}
-      onPress={() => {
-        router.push("/examples");
-      }}
-    >
-      Connect
-    </Navbar.Link>
-    <Navbar.Link
-      key="blog"
-      isActive={pathname === "/blog"}
-      onPress={() => {
-        router.push("/blog");
-      }}
+      onPress={() =>
+        router.push("/pricing")
+      }
+      isActive={pathname == "/pricing"}
     >
       Pricing
     </Navbar.Link>
@@ -182,9 +172,6 @@ const NavbarComp = () => {
           <Dropdown.Item textValue="Account" key="account" withDivider>
             Account
           </Dropdown.Item>
-          <Dropdown.Item textValue="Cover Letters" key="cover_letters">
-            Cover Letters
-          </Dropdown.Item>
           <Dropdown.Item textValue="Settings" key="settings">
             Settings
           </Dropdown.Item>
@@ -215,26 +202,17 @@ const NavbarComp = () => {
         color="inherit"
         css={{ minWidth: "100%" }}
         onPress={() =>
-          user.uid !== "" ? router.push("/home") : router.push("/login")
+          user.uid !== "" ? router.push("/connectBank") : router.push("/login")
         }
       >
-        Services
+        Connect My Bank
       </Link>
     </Navbar.CollapseItem>
-    <Navbar.CollapseItem isActive={pathname === "/pricing"}>
+    <Navbar.CollapseItem isActive={pathname === "/learn"}>
       <Link
         color="inherit"
         css={{ minWidth: "100%" }}
-        onPress={() => router.push("/pricing")}
-      >
-        Pricing
-      </Link>
-    </Navbar.CollapseItem>
-    <Navbar.CollapseItem>
-      <Link
-        color="inherit"
-        css={{ minWidth: "100%" }}
-        onPress={() => router.push("/login")}
+        onPress={() => router.push("/learn")}
       >
         Learn
       </Link>
@@ -243,9 +221,9 @@ const NavbarComp = () => {
       <Link
         color="inherit"
         css={{ minWidth: "100%" }}
-        onPress={() => router.push("/blog")}
+        onPress={() => router.push("/pricing")}
       >
-        Blog
+        Pricing
       </Link>
     </Navbar.CollapseItem>
   </Navbar.Collapse>

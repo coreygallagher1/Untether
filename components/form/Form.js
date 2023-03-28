@@ -116,7 +116,7 @@ export default function Form(props) {
 
   // If user is logged in, redirect to /home
   const authh = getAuth(fbapp);
-  onAuthStateChanged(getAuth(), (user) => (user ? router.push("/home") : null));
+  onAuthStateChanged(getAuth(), (user) => (user ? router.push("/") : null));
 
   return (
     <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>
