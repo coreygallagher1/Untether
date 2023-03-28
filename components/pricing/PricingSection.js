@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 
-
 const PricingContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px 0;
-  background-color: #1f1f1f;
+  background-color: #222222;
   padding: 60px;
 `;
 
@@ -17,101 +16,83 @@ const PricingHeading = styled.h2`
   color: #ffffff;
 `;
 
-const PricingCardContainer = styled.div`
+const PricingCardsContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-top: 60px;
+  gap: 50px;
+  flex-wrap: wrap;
 `;
 
 const PricingCard = styled.div`
+  width: 300px;
+  height: 400px;
+  border: 2px solid #80a9ff;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 300px;
-  margin: 0 30px;
-  background-color: #ffffff;
-  padding: 40px 30px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  }
+  justify-content: space-between;
 `;
 
-const PricingCardHeading = styled.h3`
+const PricingPlan = styled.h3`
   font-size: 2rem;
-  color: #222222;
-  margin-bottom: 20px;
+  color: #ffffff;
 `;
 
-const PricingCardPrice = styled.p`
+const PricingPrice = styled.p`
   font-size: 2.5rem;
-  color: #80a9ff;
-  margin-bottom: 30px;
+  color: #ffffff;
 `;
 
-const PricingCardFeatureList = styled.ul`
+const PricingFeatures = styled.ul`
   list-style: none;
+  text-align: center;
   margin: 0;
   padding: 0;
 `;
 
-const PricingCardFeature = styled.li`
-  font-size: 1.2rem;
-  color: #555555;
-  margin-bottom: 10px;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+const PricingFeature = styled.li`
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 20px 0;
 `;
+
   
 
 const PricingSection = () => {
-  const pricingCards = [
-    {
-      id: 'basic',
-      title: 'Basic',
-      price: '$9.99/mo',
-      features: ['1 user', 'Basic analytics', 'Email support'],
+  const plans = [    {      name: 'Basic',      price: '$9.99/month',      features: ['1 user', '5 accounts', '10 transactions per month']
     },
     {
-      id: 'pro',
-      title: 'Pro',
-      price: '$29.99/mo',
-      features: ['5 users', 'Advanced analytics', 'Phone and email support'],
+      name: 'Pro',
+      price: '$19.99/month',
+      features: ['5 users', '25 accounts', '50 transactions per month']
     },
     {
-      id: 'premium',
-      title: 'Premium',
-      price: '$99.99/mo',
-      features: ['Unlimited users', 'Advanced analytics', '24/7 support'],
-    },
+      name: 'Enterprise',
+      price: '$99.99/month',
+      features: ['Unlimited users', 'Unlimited accounts', 'Unlimited transactions']
+    }
   ];
 
   return (
     <PricingContainer>
-    <PricingHeading>Choose Your Plan</PricingHeading>
-    <PricingCardContainer>
-      {pricingCards.map((card) => (
-        <PricingCard key={card.id}>
-          <PricingCardHeading>{card.title}</PricingCardHeading>
-          <PricingCardPrice>{card.price}</PricingCardPrice>
-          <PricingCardFeatureList>
-            {card.features.map((feature) => (
-              <PricingCardFeature key={feature}>{feature}</PricingCardFeature>
-            ))}
-          </PricingCardFeatureList>
-        </PricingCard>
-      ))}
-    </PricingCardContainer>
-  </PricingContainer>
+      <PricingHeading>Our Plans</PricingHeading>
+      <PricingCardsContainer>
+        {plans.map(plan => (
+          <PricingCard>
+            <PricingPlan>{plan.name}</PricingPlan>
+            <PricingPrice>{plan.price}</PricingPrice>
+            <PricingFeatures>
+              {plan.features.map(feature => (
+                <PricingFeature>{feature}</PricingFeature>
+              ))}
+            </PricingFeatures>
+          </PricingCard>
+        ))}
+      </PricingCardsContainer>
+    </PricingContainer>
   );
 };
 

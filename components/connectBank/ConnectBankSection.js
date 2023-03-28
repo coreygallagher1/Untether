@@ -15,7 +15,7 @@ const ConnectContainer = styled.div`
 const ConnectHeading = styled.h2`
   font-size: 3rem;
   margin-bottom: 40px;
-  color: #80a9ff;
+  color: #ffffff;
 `;
 
 const ConnectForm = styled.form`
@@ -41,6 +41,7 @@ const ConnectInput = styled.input`
   color: #222222;
   margin-top: 10px;
   width: 100%;
+  border: 2px solid #80a9ff;
 `;
 
 const ConnectButton = styled.button`
