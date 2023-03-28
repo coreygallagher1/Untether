@@ -10,7 +10,7 @@ const HomePageContainer = styled.div`
   color: #fff;
 `;
 
-const HomePage = () => {
+const Homepage = () => {
   return (
     <HomePageContainer>
       <HeroSection />
@@ -23,4 +23,4 @@ const HomePage = () => {
 };
 
 
-export default HomePage;
+export default Homepage;
