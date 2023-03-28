@@ -4,6 +4,7 @@ import FeaturesSection from '../components/homepage/FeaturesSection';
 import TestimonialsSection from '../components/homepage/TestimonialsSection';
 import HowItWorksSection from '../components/homepage/HowItWorksSection';
 import CTASection from '../components/homepage/CTASection';
+import LearnSection from '../components/learn/LearnSection';
 
 const HomePageContainer = styled.div`
   background-color: #1a1a1a;
@@ -13,7 +14,7 @@ const HomePageContainer = styled.div`
 const Learn = () => {
   return (
     <HomePageContainer>
-
+      <LearnSection />
       
     </HomePageContainer>
   );
