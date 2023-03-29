@@ -19,9 +19,12 @@
     "lerna": "^6.5.1",
     "next": "13.1.2",
     "next-themes": "^0.2.1",
+    "plaid": "^13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-native-plaid-link-sdk": "^10.1.0",
+    "react-plaid-link": "^3.4.0",
     "styled-components": "^5.3.9"
   },
   "packageManager": "yarn@3.3.1",
